@@ -44,8 +44,9 @@ app.get('/about',(req, res)=>{
 
 app.get('/help',(req, res)=>{
     res.render('help',{
-        name: "Lalhming",
-        age: 40
+        title: "Help",
+        name: 'Howard',
+        age: 7
     });
 
 })
@@ -53,7 +54,8 @@ app.get('/help',(req, res)=>{
 app.get('/weather',(req, res)=>{
     res.send({
         forecast: "It is sunny",
-        location: 'Aizawl'
+        location: 'Aizawl',
+        name: 'Howard'
     });
 
 })
