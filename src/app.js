@@ -60,8 +60,22 @@ app.get('/weather',(req, res)=>{
 
 })
 
+app.get('/help/*',(req,res)=>{
+    res.render('404',{
+        title:'404:',
+        name: "Howard",
+        errorMessage: ' Help data Page not found'
+    })
+})
 
 
+app.get('*',(req, res)=>{
+    res.render('404',{
+        title:'404:',
+        name: "Howard",
+        errorMessage: ' Page not found'
+    })
+})
 
 // The code below runs the server and will run it unless you shut it down manually
 
