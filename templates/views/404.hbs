@@ -5,12 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
-    <title>Home page</title>
+    <link rel="icon" href="/img/weather.png">
+    <title>Error page</title>
 </head>
 
 <body>
-    <h1>{{> header}}</h1>
-    <h1>{{errorMessage}}</h1>
+    <div class="main-content">
+        <h3>{{> header}}</h3>
+        <p>{{errorMessage}}</p>
+    </div>
+    
     <h3>{{>footer}}</h3>
 </body>
 
