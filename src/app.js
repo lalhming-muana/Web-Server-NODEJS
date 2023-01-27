@@ -1,7 +1,8 @@
 const { hasSubscribers } = require('diagnostics_channel');
 const express = require('express')
 const path = require('path')
-const hbs = require('hbs')
+const hbs = require('hbs');
+const { query } = require('express');
 
 const app = express()
 
@@ -52,9 +53,15 @@ app.get('/help',(req, res)=>{
 })
 
 app.get('/weather',(req, res)=>{
+
+    if(!req.query.address){
+        return res.send({
+            error: 'No address provided. Please provide the required address'
+        })
+    }
     res.send({
         forecast: "It is sunny",
-        location: 'Aizawl',
+        location: req.query.address,
         name: 'Howard'
     });
 
@@ -69,6 +76,22 @@ app.get('/help/*',(req,res)=>{
 })
 
 
+app.get('/products',(req, res)=>{
+    
+    if(!req.query.search){
+        return res.send({
+            error: 'You must provide a search term'
+        })
+    }
+
+    console.log(req.query)
+    res.send({
+        products: []
+    })
+
+})
+
+
 app.get('*',(req, res)=>{
     res.render('404',{
         title:'404:',
@@ -76,6 +99,9 @@ app.get('*',(req, res)=>{
         errorMessage: ' Page not found'
     })
 })
+
+
+
 
 // The code below runs the server and will run it unless you shut it down manually
 
