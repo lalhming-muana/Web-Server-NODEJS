@@ -1,3 +1,8 @@
+/**
+ * First you take an address and geocode it- means gives lat and long
+ * then, you return the latitude, longitude and lcoation
+ */
+
 const request = require('request')
 require('dotenv').config({path: require('find-config')('.env')})
 
@@ -27,5 +32,7 @@ const geocode =(address, callback)=>{
 
 }
 
-
-module.exports = geocode
+geocode('Kelsih',(error, data)=>{
+    console.log('Error: ',error);
+    console.log('Data: ',data);
+})

@@ -1,26 +1,30 @@
-const request = require('request')
 
+const request = require('request')
 require('dotenv').config({path: require('find-config')('.env')})
+
 const weatherstack_key = process.env.WEATHERSTACK_API_KEY
 
+const forecast=(latitude, longitude, callback)=>{
 
-const forecast_url =`http://api.weatherstack.com/current?access_key=${weatherstack_key}&query=23.6249,92.7245&units=f`
+    const url='http://api.weatherstack.com/current?access_key='+weatherstack_key+'&query='+latitude+','+longitude+'&units=f'
+
+    request({url: url, json:true}, (error,response)=>{
+        
+        if(error){
+            callback(' Cannot connect to weatherstack. Please check your internet connection.', undefined);
+        }
+        else if(response.body.error){
+            callback(' Cannot find location. Please enter a valid location', undefined)
+        }
+        else{
+            callback(undefined,`Temperature: ${response.body.current.temperature} degrees \nWeather: ${response.body.current.weather_descriptions[0]}`)
+        }
+
+    })
 
 
-request({url: forecast_url, json: true}, (error , response) =>{
-
-    if(error){
-        console.log('unable to connect to weather services'); // Internet connection down
-    }
-    else if(response.body.error){
-        console.log('Coordintates missing!! Please provide proper coordinates.');
-    }
+}
 
 
-    else{
-    const weather = response.body.current.weather_descriptions[0];
-    const temperature = response.body.current.temperature;
-    console.log('Temperature: ',temperature,'C   Weather: ',weather);}
 
-
-})
+ module.exports = forecast

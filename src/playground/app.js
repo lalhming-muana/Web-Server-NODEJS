@@ -1,14 +1,13 @@
 const request = require('request');
-require('dotenv').config({ path: require('find-config')('.env') })
+const geocode = require('./geocode');
+const forecast = require('./forecast')
 
-const mapbox_key = process.env.MAPBOX_API_KEY
+geocode('Aizawl',(error, data)=>{
+    console.log('Error: ',error);
+    console.log('Data: ',data);
+})
 
-
-const geocode_url=`https://api.mapbox.com/geocoding/v5/mapbox.places/aizawl.json?access_token=${mapbox_key}`
-
-request({url: geocode_url , json: true}, (error, response)=>{
-    console.log('Longitude',response.body.features[0].center[0])
-    console.log('Latitude',response.body.features[0].center[1])
-    console.log('Checking for the response... ',response.body.features.length);
-
-} )
+forecast(-75.7088, 44.1545, (error, data) => {
+    console.log('Error', error)
+    console.log('Data', data)
+  })
