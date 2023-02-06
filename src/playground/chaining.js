@@ -4,7 +4,6 @@ const request = require('request')
 
 const address = process.argv[2];
 
-//console.log(`khaw hming: ${address}`)
 
 if(!address){
     console.log('A khaw hming i dah lo');
