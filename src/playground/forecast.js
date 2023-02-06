@@ -6,18 +6,18 @@ const weatherstack_key = process.env.WEATHERSTACK_API_KEY
 
 const forecast=(latitude, longitude, callback)=>{
 
-    const url='http://api.weatherstack.com/current?access_key='+weatherstack_key+'&query='+latitude+','+longitude+'&units=f'
+    const url='http://api.weatherstack.com/current?access_key='+weatherstack_key+'&query='+latitude+','+longitude+'&units=m'
 
     request({url: url, json:true}, (error,response)=>{
         
         if(error){
-            callback(' Cannot connect to weatherstack. Please check your internet connection.', undefined);
+            callback(' Server a connect theilo. I internet connection check rawh.', undefined);
         }
         else if(response.body.error){
-            callback(' Cannot find location. Please enter a valid location', undefined)
+            callback(' A Khaw hming i dah hi a diklo. A spelling enchiang leh rawh.', undefined)
         }
         else{
-            callback(undefined,`Temperature: ${response.body.current.temperature} degrees \nWeather: ${response.body.current.weather_descriptions[0]}`)
+            callback(undefined,`\nTemperature: ${response.body.current.temperature} degrees \nWeather: ${response.body.current.weather_descriptions[0]}`)
         }
 
     })
