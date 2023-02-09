@@ -17,7 +17,7 @@ const forecast=(latitude, longitude, callback)=>{
             callback(' A Khaw hming i dah hi a diklo. A spelling enchiang leh rawh.', undefined)
         }
         else{
-            callback(undefined,`\nTemperature: ${response.body.current.temperature} degrees \nWeather: ${response.body.current.weather_descriptions[0]}`)
+            callback(undefined,`Temperature: ${response.body.current.temperature} degrees Weather: ${response.body.current.weather_descriptions[0]}`)
         }
 
     })
