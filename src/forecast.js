@@ -1,21 +1,30 @@
-const request = require('request')
 
-require('dotenv').config()
+const request = require('request')
+require('dotenv').config({path: require('find-config')('.env')})
+
 const weatherstack_key = process.env.WEATHERSTACK_API_KEY
 
-const forecast = (address, callback) => {
-    const url =`http://api.weatherstack.com/current?access_key=${weatherstack_key}&query=23.6249,92.7245&units=f`
+const forecast=(latitude, longitude, callback)=>{
 
-    request({ url, json: true }, (error, { body }) => {
-        if (error) {
-            callback('Unable to connect to weather service!', undefined)
-        } else if (body.error) {
-            callback('Unable to find location', undefined)
-        } else {
-            callback(undefined, body.daily.data[0].summary + ' It is currently ' + body.currently.temperature + ' degress out. There is a ' + body.currently.precipProbability + '% chance of rain.')
+    const url='http://api.weatherstack.com/current?access_key='+weatherstack_key+'&query='+latitude+','+longitude+'&units=m'
+
+    request({url: url, json:true}, (error,response)=>{
+        
+        if(error){
+            callback(' Server a connect theilo. I internet connection check rawh.', undefined);
         }
+        else if(response.body.error){
+            callback(' A Khaw hming i dah hi a diklo. A spelling enchiang leh rawh.', undefined)
+        }
+        else{
+            callback(undefined,`\nTemperature: ${response.body.current.temperature} degrees \nWeather: ${response.body.current.weather_descriptions[0]}`)
+        }
+
     })
+
+
 }
 
-module.exports = forecast
 
+
+ module.exports = forecast
