@@ -5,6 +5,7 @@ const hbs = require('hbs');
 const { query } = require('express');
 const geocode = require('./geocode')
 const forecast = require('./forecast')
+const port = process.env.PORT || 3000
 
 const app = express()
 
@@ -132,6 +133,6 @@ app.get('*',(req, res)=>{
 
 // The code below runs the server and will run it unless you shut it down manually
 
-app.listen(3000, ()=>{
+app.listen(port, ()=>{
     console.log('The server is starting on port no: 3000');
 })
