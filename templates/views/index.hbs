@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="icon" href="/img/weather.png">
-    <script src="/js/app.js"></script>
+    
     <title>Home page</title>
 </head>
 
@@ -16,10 +16,20 @@
         <p>
             Use this site to get your weather.
         </p>
+
+        <form action="">
+            <input placeholder="location">
+            <button>Search</button>
+        </form>
+
     </div>
+
+    <p id="message-one"></p>
+    <p id="message-two"></p>
     
     
     <h3>{{>footer}}</h3>
+    <script src="/js/app.js"></script>
 </body>
 
 </html>
