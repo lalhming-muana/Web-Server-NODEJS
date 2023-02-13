@@ -1,52 +1,26 @@
-console.log('client side javascript code running');
+console.log('Client side javascript file is loaded!')
 
+const weatherForm = document.querySelector('form')
+const search = document.querySelector('input')
+const messageOne = document.querySelector('#message-1')
+const messageTwo = document.querySelector('#message-2')
 
+weatherForm.addEventListener('submit', (e) => {
+    e.preventDefault()
 
-// fetch('http://localhost:3000/weather?address=Boston').then((response)=>{
+    const location = search.value
 
-//     response.json().then((data)=>{
-//         if(data.error){
-//             console.log('error cannot connect to the site!');
-//         }
+    messageOne.textContent = 'Loading...'
+    messageTwo.textContent = ''
 
-//         else{
-//             console.log('location: ',data.location);
-//             console.log('forecast: ',data.forecast);
-//         }
-
-//     })
-// })
-
-
-const weatherForm = document.querySelector('form');
-const search = document.querySelector('input');
-const messageOne = document.querySelector('#message-one')
-const messageTwo = document.querySelector('#message-two')
-
-
-messageOne.textContent = 'A in load mek ..........'
-messageTwo.textContent = ''
-
-weatherForm.addEventListener('submit', (event)=>{
-    event.preventDefault();
-    const location = search.value;
-
-    fetch(`http://localhost:3000/weather?address=${location}`).then((response)=>{
-
-    response.json().then((data)=>{
-        if(data.error){
-            messageOne.textContent = data.error
-            messageTwo.textContent = 'A chunga error message hi chhiar la ti nawn leh rawh'
-        }
-
-        else{
-            messageOne.textContent = data.location
-
-            messageTwo.textContent = data.forecast
-        }
-
+    fetch('http://localhost:3000/weather?address=' + location).then((response) => {
+        response.json().then((data) => {
+            if (data.error) {
+                messageOne.textContent = data.error
+            } else {
+                messageOne.textContent = data.location
+                messageTwo.textContent = data.forecast
+            }
+        })
     })
-})
-
-    
 })
