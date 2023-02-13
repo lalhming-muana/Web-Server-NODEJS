@@ -1,6 +1,6 @@
 # Web-Server-NODEJS
 
-This is a simple application which uses Nodejs , ExpressJs and HBS which returns the
+This is a simple application which uses Nodejs , ExpressJs and HBS. It returns the
 weather forecast when a user inputs the name of a place.
 
 https://weather-l09a.onrender.com/
