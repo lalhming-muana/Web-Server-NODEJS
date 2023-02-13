@@ -1,26 +1,19 @@
 {
-  "name": "web-server-nodejs",
+  "name": "web-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lalhming-muana/Web-Server-NODEJS.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lalhming-muana/Web-Server-NODEJS/issues"
-  },
-  "homepage": "https://github.com/lalhming-muana/Web-Server-NODEJS#readme",
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "find-config": "^1.0.0",
+    "hbs": "^4.2.0",
     "request": "^2.88.2"
   }
 }
